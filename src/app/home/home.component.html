@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="text-center">
+        <h1>Anguar4 Basic Crud with Laravel API</h1>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    Data Entry :
+                </div>
+            </div>
+            <div class="panel-body">
+                    <input type="hidden" [(ngModel)]="userDet.id">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="userDet.fname" placeholder="First Name">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Middle Initial</label>
+                    <input type="text" class="form-control" [(ngModel)]="userDet.mi" placeholder="Middle Initial">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="userDet.lname" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Position</label>
+                    <input type="text" class="form-control" [(ngModel)]="userDet.position" placeholder="Position">
+                </div>
+            </div>
+            <div class="col-md-12 text-right">
+                <button class="btn btn-success" (click)="create(userDet)" *ngIf="!toggle">Submit</button>
+                <button class="btn btn-success" (click)="update(userDet.id)" *ngIf="toggle">Update</button>
+                <button type="clear" class="btn btn-default" (click)="clear()">Clear</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Position</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of data; let i = index">
+                        <td>{{ i + 1}}</td>
+                        <td>{{ x.fname }}</td>
+                        <td>{{ x.mi }}</td>
+                        <td>{{ x.lname }}</td>
+                        <td>{{ x.position }}</td>
+                        <td><button class="btn btn-danger btn-sm" (click)="delete(x.id)"><i class="fa fa-trash-o" area-hidden="true"></i> Delete</button>&nbsp;<button class="btn btn-primary btn-sm" (click)="singleFetch(x.id)"><i class="fa fa-pencil-square-o" area-hidden="true"></i> Update</button></td>
+                    </tr>
+                    <tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
